@@ -1,0 +1,234 @@
+{
+  "outbounds": [
+    { "tag": "🚀 节点选择", "type": "selector", "outbounds": [ "♻️ 自动选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🌐 其他节点",  "🎯 本地直连", {providers_tags} ] },
+    { "tag": "♻️ 自动选择", "type": "urltest", "tolerance": 30, "use_all_providers": true },
+    { "tag": "🇭🇰 香港节点", "type": "selector", "use_all_providers": true, "include": "(?i)(🇭🇰|港|hk|hongkong|hong kong)" },
+    { "tag": "🇹🇼 台湾节点", "type": "selector", "use_all_providers": true, "include": "(?i)(🇹🇼|台|tw|taiwan|tai wan)" },
+    { "tag": "🇯🇵 日本节点", "type": "selector", "use_all_providers": true, "include": "(?i)(🇯🇵|日|jp|japan)", "exclude": "(?i)(免费|free|trial|test|公益)" },
+    { "tag": "🇸🇬 新加坡节点", "type": "selector", "use_all_providers": true, "include": "(?i)(🇸🇬|新|sg|singapore)" },
+    { "tag": "🇺🇸 美国节点", "type": "selector", "use_all_providers": true, "include": "(?i)(🇺🇸|美|us|unitedstates|united states)" },
+    { "tag": "🌐 其他节点", "type": "selector", "use_all_providers": true,  "exclude": "(?i)(免费|🇭🇰|台|🇯🇵|🇸🇬|美)" },
+    { "tag": "🤖 AI 平台", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点" ] },
+    { "tag": "📲 电报消息", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🌐 其他节点"] },
+    { "tag": "🎮 游戏服务", "type": "selector", "outbounds": [ "🎯 本地直连", "🌐 其他节点", "🚀 节点选择" ] },
+    { "tag": "🪟 微软服务", "type": "selector", "outbounds": [ "🎯 本地直连", "🚀 节点选择" ] },
+    { "tag": "🇬 谷歌服务", "type": "selector", "outbounds": [ "🎯 本地直连", "🚀 节点选择" ] },
+    { "tag": "🍎 苹果服务", "type": "selector", "outbounds": [ "🎯 本地直连", "🚀 节点选择" ] },
+    { "tag": "🎥 Tiktok", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🌐 其他节点"] },
+    { "tag": "🎥 奈飞视频", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🌐 其他节点"] },
+    { "tag": "📹 油管视频", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🌐 其他节点"] },
+    { "tag": "🌍 国外媒体", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🌐 其他节点"] },
+    { "tag": "🎮 游戏平台", "type": "selector", "outbounds": [ "🚀 节点选择", "🎯 本地直连", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🌐 其他节点"] },
+    { "tag": "🐟 漏网之鱼", "type": "selector", "outbounds": [ "🚀 节点选择", "🇭🇰 香港节点", "🇹🇼 台湾节点", "🇯🇵 日本节点", "🇸🇬 新加坡节点", "🇺🇸 美国节点", "🌐 其他节点","🎯 本地直连" ] },
+    { "tag": "🛑 广告域名", "type": "selector", "outbounds": [ "🔴 全球拦截", "🎯 本地直连" ] },
+    { "tag": "🔴 全球拦截", "type": "block" },
+    { "tag": "🎯 本地直连", "type": "direct" },
+    { "tag": "GLOBAL", "type": "selector", "outbounds": [ "🚀 节点选择", "🎯 本地直连" ] }
+  ],
+  "route": {
+    "rules": [
+      { "rule_set": [ "private" ], "outbound": "🎯 本地直连" },
+      { "rule_set": [ "ads" ], "outbound": "🛑 广告域名" },
+      { "rule_set": [ "trackerslist" ], "outbound": "🚀 节点选择" },
+      { "rule_set": [ "microsoft-cn" ], "outbound": "🪟 微软服务" },
+      { "rule_set": [ "apple-cn" ], "outbound": "🍎 苹果服务" },
+      { "rule_set": [ "google-cn" ], "outbound": "🇬 谷歌服务" },
+      { "rule_set": [ "games-cn" ], "outbound": "🎮 游戏服务" },
+      { "rule_set": [ "netflix" ], "outbound": "🎥 奈飞视频" },
+      { "rule_set": [ "tiktok" ], "outbound": "🎥 Tiktok" },
+      { "rule_set": [ "youtube" ], "outbound": "📹 油管视频" },
+      { "rule_set": [ "media" ], "outbound": "🌍 国外媒体" },
+      { "rule_set": [ "games" ], "outbound": "🎮 游戏平台" },
+      { "rule_set": [ "ai" ], "outbound": "🤖 AI 平台" },
+      { "rule_set": [ "networktest" ], "outbound": "🚀 节点选择" },
+      { "rule_set": [ "proxy" ], "outbound": "🚀 节点选择" },
+      { "rule_set": [ "cn" ], "outbound": "🎯 本地直连" },
+      { "rule_set": [ "privateip" ], "outbound": "🎯 本地直连" },
+      { "rule_set": [ "telegramip" ], "outbound": "📲 电报消息" },
+
+      { "action": "resolve", "server": "dns_proxy", "strategy": "prefer_ipv4", "match_only": true},
+      { "rule_set": [ "netflixip" ], "outbound": "🎥 奈飞视频" },
+      { "rule_set": [ "mediaip" ], "outbound": "🌍 国外媒体" },
+      { "rule_set": [ "gamesip" ], "outbound": "🎮 游戏平台" },
+      { "rule_set": [ "cnip" ], "outbound": "🎯 本地直连" }
+    ],
+    "rule_set": [
+      {
+        "tag": "private",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/private.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/private.srs",
+        "download_detour": "DIRECT"
+      },
+      {
+        "type": "remote",
+        "tag": "ads",
+        "path": "./ruleset/ads.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/ads.srs",
+        "download_detour": "DIRECT"
+      },
+      {
+        "tag": "trackerslist",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/trackerslist.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/trackerslist.srs",
+        "download_detour": "DIRECT"
+      },
+      {
+        "tag": "microsoft-cn",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/microsoft-cn.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/microsoft-cn.srs",
+        "download_detour": "DIRECT"
+      },
+      {
+        "tag": "apple-cn",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/apple-cn.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/apple-cn.srs",
+        "download_detour": "DIRECT"
+      },
+      {
+        "tag": "google-cn",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/google-cn.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/google-cn.srs",
+        "download_detour": "DIRECT"
+      },
+      {
+        "tag": "games-cn",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/games-cn.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/games-cn.srs",
+        "download_detour": "DIRECT"
+      },
+      {
+        "tag": "netflix",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/netflix.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/netflix.srs",
+        "download_detour": "DIRECT"
+      },
+      {
+        "tag": "tiktok",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/tiktok.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/tiktok.srs",
+        "download_detour": "DIRECT"
+      },
+      {
+        "tag": "youtube",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/youtube.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/youtube.srs",
+        "download_detour": "DIRECT"
+      },
+      {
+        "tag": "media",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/media.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/media.srs",
+        "download_detour": "DIRECT"
+      },
+      {
+        "tag": "games",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/games.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/games.srs",
+        "download_detour": "DIRECT"
+      },
+      {
+        "tag": "ai",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/ai.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/ai.srs",
+        "download_detour": "DIRECT"
+      },
+      {
+        "tag": "networktest",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/networktest.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/networktest.srs",
+        "download_detour": "DIRECT"
+      },
+      {
+        "tag": "proxy",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/proxy.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/proxy.srs",
+        "download_detour": "DIRECT"
+      },
+      {
+        "tag": "cn",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/cn.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cn.srs",
+        "download_detour": "DIRECT"
+      },
+      {
+        "tag": "privateip",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/privateip.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/privateip.srs",
+        "download_detour": "DIRECT"
+      },
+      {
+        "tag": "cnip",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/cnip.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/cnip.srs",
+        "download_detour": "DIRECT"
+      },
+      {
+        "tag": "netflixip",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/netflixip.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/netflixip.srs",
+        "download_detour": "DIRECT"
+      },
+      {
+        "tag": "mediaip",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/mediaip.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/mediaip.srs",
+        "download_detour": "DIRECT"
+      },
+      {
+        "tag": "gamesip",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/gamesip.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/gamesip.srs",
+        "download_detour": "DIRECT"
+      },
+      {
+        "tag": "telegramip",
+        "type": "remote",
+        "format": "binary",
+        "path": "./ruleset/telegramip.srs",
+        "url": "https://testingcf.jsdelivr.net/gh/DustinWin/ruleset_geodata@sing-box-ruleset/telegramip.srs",
+        "download_detour": "DIRECT"
+      }
+    ],
+    "final": "🐟 漏网之鱼"
+  }
+}
